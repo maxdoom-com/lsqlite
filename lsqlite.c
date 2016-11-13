@@ -39,9 +39,9 @@ static int lsqlite_open(lua_State *L)
 	{
 		if( db )
 		{
-				sqlite3_close(db);
-			}
-			lua_pushnil(L);
+			sqlite3_close(db);
+		}
+		lua_pushnil(L);
 	}
 	return 1;
 }
@@ -75,7 +75,7 @@ static int lsqlite_exec(lua_State *L)
 				lua_pushstring(L, args[i]);
 				value = strtod(argv[i], &endptr);
 				if( *endptr==(0) ) lua_pushnumber(L, value);
-				else				lua_pushstring(L, argv[i]);
+				else lua_pushstring(L, argv[i]);
 				/*{ fprintf(stderr,"lsqlite.exec.cb... %s = %s (%i)\n",args[i],argv[i], *endptr); }*/
 				lua_settable(L, -3);
 		}
@@ -103,7 +103,7 @@ static int lsqlite__tostring(lua_State *L)
 {
 	lsqlite_data *self = check_lsqlite(L, 1);
 	if(self->p) lua_pushfstring(L, "SQLite Database (%s)", self->n);
-	else		lua_pushstring(L, "SQLite Database (closed)");
+	else lua_pushstring(L, "SQLite Database (closed)");
 	return 1;
 }
 
