@@ -20,13 +20,13 @@ db:exec("insert into 'my_table' values ( 5, 6 );")
 db:exec("insert into 'my_table' values ( -111, -222 );")
 results, err=db:exec("select * from 'my_table';")
 
-print(err, results)
+print(results, "error:", err)
 
 local sum=0
 for i = 1, #results do
     for k, v in pairs( results[i] ) do
-	print( i, k, v )
-	sum=sum+v
+    print( "row:", i, "key:", k, "value:", v )
+    sum=sum+v
     end
 end
 
