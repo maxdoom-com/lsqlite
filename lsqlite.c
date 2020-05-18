@@ -216,11 +216,27 @@ static const luaL_Reg lsqlite_module[] =
  */
 int luaopen_lsqlite(lua_State *L)
 {
+
+    /* The module system has changed. This switches the behaviour. */
+#if LUA_VERSION_NUM == 501
     luaL_register(L, "lsqlite", lsqlite_module);
+#else
+    luaL_newlib(L, lsqlite_module);
+#endif
+
     luaL_newmetatable(L, "lsqlite.DB");
     lua_pushvalue(L, -1);
     lua_setfield(L, -2, "__index");
+
+    /* The module system has changed. This switches the behaviour. */
+#if LUA_VERSION_NUM == 501
     luaL_register(L, NULL, lsqlite_method_map);
+#else
+    luaL_setfuncs(L, lsqlite_method_map, 0);
+#endif
+
     lua_pop(L,1);
+
+
     return 1;
 }

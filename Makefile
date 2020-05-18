@@ -7,10 +7,10 @@ RM=rm -rf
 # CF=-Wall -Wno-unused -I/usr/include/lua5.1
 
 # --- lua5.2 ---
-#CF=-Wall -Wno-unused -I/usr/include/lua5.2 -DLUA_COMPAT_MODULE=1
+# CF=-Wall -Wno-unused -I/usr/include/lua5.2
 
 # --- lua5.3 ---
-CF=-Wall -Wno-unused -I/usr/include/lua5.3 -DLUA_COMPAT_MODULE=1
+CF=-Wall -Wno-unused -I/usr/include/lua5.3
 
 all: lsqlite.so
 

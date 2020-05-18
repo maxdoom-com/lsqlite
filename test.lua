@@ -1,4 +1,4 @@
-require("lsqlite")
+local lsqlite = require("lsqlite")
 
 -- open an in memory database
 -- db = lsqlite.open(":memory:")
