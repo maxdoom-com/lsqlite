@@ -1,13 +1,13 @@
 local lsqlite = require("lsqlite")
 
 -- open an in memory database
--- db = lsqlite.open(":memory:")
+-- local db = lsqlite.open(":memory:")
 
 -- open a file
 local db = lsqlite.open("test.db")
 
 -- open an inaccessible file
--- db = lsqlite.open("/root/test.db")
+-- local db = lsqlite.open("/root/test.db")
 
 -- check if we got an handle
 if not db then print("could not open the database") return end

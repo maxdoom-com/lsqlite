@@ -1,14 +1,17 @@
 LSQlite
 =======
 
-Lsqlite is a simple sqlite module i wrote back in 2010. It is still fully functional with lua 5.3 as of end 2017.
+Lsqlite is a simple sqlite module i wrote back in 2010. It is still fully
+functional with lua 5.3 as of end 2017.
+
+Update: It's 2020 and I had to change two lines.
 
 
 SYNOPSIS
 --------
 
 ```lua
-require("lsqlite")
+lsqlite = require("lsqlite")
 
 local db = lsqlite.open(database)
 db:exec(statements)
@@ -19,7 +22,9 @@ db:close(db)
 SUMMARY
 -------
 
-The lsqlite module is a minimalistic sqlite3 - lua module.  You can open a database, perform any sqlite statements on it and close it.  If you don't close the database, the garbage collector will do this for you.
+The lsqlite module is a minimalistic sqlite3 - lua module. 
+You can open a database, perform any sqlite statements on it and close it.
+If you don't close the database, the garbage collector will do this for you.
 
 
 DESCRIPTION
@@ -34,6 +39,8 @@ EXAMPLE
 -------
 
 ```lua
+lsqlite = require("lsqlite")
+
 local db = lsqlite.open("database.sqlite")
 local results, error = db:exec("select * from my_table;")
 for i=1,#results do
@@ -51,6 +58,8 @@ SPECIAL FILES
 To open an in memory database try
 
 ```lua
+lsqlite = require("lsqlite")
+
 local db = lsqlite.open(":memory:")
 ```
 
@@ -58,4 +67,5 @@ local db = lsqlite.open(":memory:")
 COPYRIGHT
 ---------
 
-Copyright © 2010-2017 by Nico Hoffmann. License is MIT. For the complete text see the supplied documentation.
+Copyright © 2010-2020 by Nico Hoffmann. License is MIT. For the complete
+text see the supplied documentation.
