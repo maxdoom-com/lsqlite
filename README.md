@@ -35,6 +35,12 @@ DESCRIPTION
 - db:close() closes an open database
 
 
+BUILDING
+--------
+
+- building the library requires `gcc` with version < `9`.
+
+
 EXAMPLE
 -------
 
