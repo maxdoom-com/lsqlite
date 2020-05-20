@@ -1,0 +1,47 @@
+# 
+# This is a Makefile for building with the amalgamed sqlite3 version.
+# 
+# Currently there is an issue linking to the shared sqlite3.so on Debian
+# with gcc-9/-10. You may use this Makefile to overcome this problem.
+# 
+# For this to work you must place sqlite3.c and sqlite3.h from an
+# archive downloaded from https://www.sqlite.org/download.html in this
+# directory.
+# 
+# Usage: `make -f Makefile-Amalgamed`
+
+CC=gcc
+LD=$(CC)
+LF=-shared -fPIC
+RM=rm -rf
+STRIP=strip
+
+# --- lua5.1 ---
+# CF=-Wall -Wno-unused -fPIC -I/usr/include/lua5.1 -I.
+
+# --- lua5.2 ---
+# CF=-Wall -Wno-unused -fPIC -I/usr/include/lua5.2 -I.
+
+# --- lua5.3 ---
+CF=-Wall -Wno-unused -fPIC -I/usr/include/lua5.3 -I.
+
+all: lsqlite.so
+
+lsqlite.so: lsqlite.o sqlite3.o
+	$(LD) $(LF) -o $@ $^ -lpthread
+	$(STRIP) $@
+
+lsqlite.o: lsqlite.c
+	$(CC) $(CF) -c -o $@ $<
+
+sqlite3.o: sqlite3.c
+	$(CC) $(CF) -c -o $@ $<
+
+test: all
+	lua test.lua
+
+re: clean all
+
+clean:
+	$(RM) lsqlite.so lsqlite.o sqlite3.o test.db
+

@@ -64,6 +64,23 @@ local db = lsqlite.open(":memory:")
 ```
 
 
+TROUBLE SHOOTING
+----------------
+
+Currently there is an issue linking to the shared sqlite3.so on Debian
+with gcc-9/-10. You may use the Makefile-Amalgamed to overcome this problem.
+
+For this to work you must place sqlite3.c and sqlite3.h from an
+archive downloaded from https://www.sqlite.org/download.html in this
+directory.
+
+Compilation:
+
+```sh
+make -f Makefile-Amalgamed
+```
+
+
 COPYRIGHT
 ---------
 
