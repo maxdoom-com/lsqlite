@@ -39,7 +39,7 @@ BUILDING
 --------
 
 - building the library requires `gcc` with version < `9`.
-- for gcc-9/-10 see [#trouble-shooting](TROUBLE SHOOTING)
+- for gcc-9/-10 see [TROUBLE SHOOTING](#trouble-shooting)
 
 EXAMPLE
 -------
